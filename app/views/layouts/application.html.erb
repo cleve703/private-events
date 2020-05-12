@@ -10,6 +10,11 @@
   </head>
 
   <body>
+    <% if !session[:user_id].nil? %>
+      <p><%= User.find_by(id: session[:user_id]).username %> is currently signed in.</p>
+    <% else %>
+      <p>No user is currently signed in.</p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
