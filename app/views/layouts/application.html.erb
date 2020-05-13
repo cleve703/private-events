@@ -11,9 +11,9 @@
 
   <body>
     <% if !session[:user_id].nil? %>
-      <p><%= User.find_by(id: session[:user_id]).username %> is currently signed in.</p>
+      <p><%= User.find_by(id: session[:user_id]).username %> is currently signed in. <%= link_to 'sign out', logout_path, method: :delete %></p>
     <% else %>
-      <p>No user is currently signed in.</p>
+      <p>No user is currently signed in. <%= link_to 'sign in', login_path %></p>
     <% end %>
     <%= yield %>
   </body>
