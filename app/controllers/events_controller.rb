@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = current_user.events.build(event_params)
     if @event.save
       @events = Event.all
       render 'index'
@@ -32,6 +32,5 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:description, :location)
     end
-
 
 end
