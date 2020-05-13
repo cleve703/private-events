@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Eventname:</strong>
-  <%= @event.eventname %>
+  <strong>Description:</strong>
+  <%= @event.description %>
 </p>
 
 <p>
@@ -10,5 +10,9 @@
   <%= @event.location %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
+<p>
+  <strong>Creator:</strong>
+  <%= @event.creator.username %>
+</p>
+
 <%= link_to 'Back', events_path %>
