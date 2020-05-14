@@ -15,4 +15,14 @@
   <%= @event.creator.username %>
 </p>
 
+<table>
+  <tr>
+    <th>Attendees</th>
+  </tr>
+  <% @event.attendees.each do |attendee| %>
+    <td><%= attendee.username %></td>
+  <% end %>
+</table>
+
+
 <%= link_to 'Back', events_path %>
