@@ -3,11 +3,38 @@
 <p>
   <strong>Username:</strong>
   <%= @user.username %>
-  <ul>
-  <% @user.events.each do |e| %>
-    <li><%= e.location %></li>
-  <% end %>
-  </ul>
 </p>
+  <hr>
+<p><%= @user.username %> is hosting the following events:</p>
+  <table>
+  <tr>
+    <th>Date</th>
+    <th>Description</th>
+    <th>Location</th>
+  </tr>
+  <% @user.events.each do |e| %>
+    <tr>
+      <td><%= e.date %></td>
+      <td><%= e.description %></td>
+      <td><%= e.location %></td>
+    </tr>
+  <% end %>
+  </table>
+<p><%= @user.username %> is attending the following events:</p>
+  <table>
+  <tr>
+    <th>Date</th>
+    <th>Description</th>
+    <th>Location</th>
+  </tr>
+  <% @user.attended_events.each do |e| %>
+    <tr>
+      <td><%= e.date %></td>
+      <td><%= e.description %></td>
+      <td><%= e.location %></td>
+    </tr>
+  <% end %>
+  </table>
+
 
 <%= link_to 'Back', users_path %>

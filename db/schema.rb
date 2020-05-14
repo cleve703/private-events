@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_05_12_152332) do
 
   create_table "events", force: :cascade do |t|
+    t.date "date"
     t.string "description"
     t.string "location"
     t.integer "creator_id", null: false
