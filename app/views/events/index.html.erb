@@ -6,7 +6,7 @@
   <% if @events.upcoming_events.blank? %>
     <p>No upcoming events at this time.</p>
   <% else %>
-    <table>
+    <table class="table">
       <thead>
         <tr>
           <th>Date</th>
@@ -29,12 +29,14 @@
       </tbody>
     </table>
   <% end %>
+  <br>
+<%= link_to 'New Event', new_event_path, class: "btn btn-primary", id: "new-event-btn" %>
 <hr>
 <h2>Previous Events</h2>
 <% if @events.previous_events.blank? %>
     <p>No previous events at this time.</p>
   <% else %>
-    <table>
+    <table class="table">
       <thead>
         <tr>
           <th>Date</th>
@@ -60,4 +62,3 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
