@@ -6,35 +6,42 @@
 </p>
   <hr>
 <p><%= @user.username %> is hosting the following events:</p>
-  <table>
-  <tr>
-    <th>Date</th>
-    <th>Description</th>
-    <th>Location</th>
-  </tr>
-  <% @user.events.each do |e| %>
+  <% if @user.events.empty? %>
+    <p>None at this time.</p>
+  <% else %>
+    <table>
     <tr>
-      <td><%= e.date %></td>
-      <td><%= e.description %></td>
-      <td><%= e.location %></td>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Location</th>
     </tr>
+    <% @user.events.each do |e| %>
+      <tr>
+        <td><%= e.date %></td>
+        <td><%= e.description %></td>
+        <td><%= e.location %></td>
+      </tr>
+    <% end %>
+    </table>
   <% end %>
-  </table>
 <p><%= @user.username %> is attending the following events:</p>
-  <table>
-  <tr>
-    <th>Date</th>
-    <th>Description</th>
-    <th>Location</th>
-  </tr>
-  <% @user.attended_events.each do |e| %>
+  <% if @user.attended_events.empty? %>
+    <p>None at this time.</p>
+  <% else %>
+    <table>
     <tr>
-      <td><%= e.date %></td>
-      <td><%= e.description %></td>
-      <td><%= e.location %></td>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Location</th>
     </tr>
+    <% @user.attended_events.each do |e| %>
+      <tr>
+        <td><%= e.date %></td>
+        <td><%= e.description %></td>
+        <td><%= e.location %></td>
+      </tr>
+    <% end %>
+    </table>
   <% end %>
-  </table>
-
 
 <%= link_to 'Back', users_path %>
