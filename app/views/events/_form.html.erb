@@ -28,7 +28,11 @@
     </div>
 
     <div class="actions">
-      <%= form.submit class: "btn btn-primary" %>
+      <% if !session[:user_id].nil? %>
+        <%= form.submit class: "btn btn-primary" %>
+      <% else %>
+        <p>Cannot submit a new event unless you are logged in.</p>
+      <% end %>
     </div>
   <% end %>
 </div>

@@ -5,9 +5,9 @@
     <ul class="nav navbar-nav navbar-right">
       <li><%= link_to "Events",     '/events' %></li>
        <% if !session[:user_id].nil? %>
-        <li><%= link_to "New event",  '/events/new'%>
-        <li><%= link_to "Sign out",   '/logout', method: :delete %>
-        <li><%= link_to "#{User.find_by(id: session[:user_id]).username}'s Profile", '/'%></li>
+        <li><%= link_to "New event",  '/events/new'%></li>
+        <li><%= link_to "#{User.find_by(id: session[:user_id]).username}'s Profile", current_user %></li>
+        <li><%= link_to "Sign out",   '/logout', method: :delete %></li>
       <% else %>
         <li><%= link_to "Sign up",    '/users/new' %></li>
         <li><%= link_to "Log in",     '/login' %></li>

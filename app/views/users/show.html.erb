@@ -5,11 +5,11 @@
   <%= @user.username %>
 </p>
   <hr>
-<p><%= @user.username %> is hosting the following events:</p>
+<h2><%= @user.username %> is hosting the following events:</h2>
   <% if @user.events.empty? %>
     <p>None at this time.</p>
   <% else %>
-    <table>
+    <table class="table">
     <tr>
       <th>Date</th>
       <th>Description</th>
@@ -18,17 +18,17 @@
     <% @user.events.each do |e| %>
       <tr>
         <td><%= e.date %></td>
-        <td><%= e.description %></td>
+        <td><%= link_to e.description, e %></td>
         <td><%= e.location %></td>
       </tr>
     <% end %>
     </table>
   <% end %>
-<p><%= @user.username %> is attending the following events:</p>
+<h2><%= @user.username %> is attending the following events:</h2>
   <% if @user.attended_events.empty? %>
     <p>None at this time.</p>
   <% else %>
-    <table>
+    <table class="table">
     <tr>
       <th>Date</th>
       <th>Description</th>
