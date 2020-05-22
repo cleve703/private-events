@@ -30,7 +30,9 @@
     <% @event.attendees.each do |attendee| %>
       <tr>
       <td><%= attendee.username %></td>
-      <td><%= link_to 'Uninvite', "#{@event.id}/invitations/#{attendee.id}", method: 'delete' %>
+      <% if @authorized_inviter == true %>
+        <td><%= link_to 'Uninvite', "#{@event.id}/invitations/#{attendee.id}", method: 'delete' %>
+      <% end %>
       </tr>
     <% end %>
   <% end %>

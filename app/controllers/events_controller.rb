@@ -26,7 +26,7 @@ class EventsController < ApplicationController
     elsif @event.creator_id == current_user.id
       @authorized_inviter = true
     else 
-      @authorized_invter = false
+      @authorized_inviter = false
     end
   end
 

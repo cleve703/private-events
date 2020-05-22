@@ -13,8 +13,19 @@ class InvitationsController < ApplicationController
   end
 
   def destroy
-    @event.invitations.delete_by(attendee_id: @attendee)
-    redirect_back(fallback_location: root_path)
+    if current_user.nil?
+      @authorized_inviter = false
+    elsif @event.creator_id == current_user.id
+      @authorized_inviter = true
+    else 
+      @authorized_inviter = false
+    end
+    if @authorized_inviter == true
+      @event.invitations.delete_by(attendee_id: @attendee)
+      redirect_back(fallback_location: root_path)
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private
