@@ -21,7 +21,7 @@
           <% @events.upcoming_events.each do |event| %>
             <tr>
               <td><%= event.date %>
-              <td><%= event.description %></td>
+              <td><%= link_to event.description, "events/#{event.id}" %></td>
               <td><%= event.location %></td>
               <td><%= event.creator.username %></td>
             </tr>
@@ -51,7 +51,7 @@
         <% @events.previous_events.each do |event| %>
           <tr>
             <td><%= event.date %>
-            <td><%= event.description %></td>
+            <td><%= link_to event.description, "events/#{event.id}" %></td>
             <td><%= event.location %></td>
             <td><%= event.creator.username %></td>
           </tr>

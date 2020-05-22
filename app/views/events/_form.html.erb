@@ -27,11 +27,6 @@
       <%= form.text_field :location %>
     </div>
 
-    <div class="field">
-      <%= form.label :attendee %>
-      <%= form.text_field :attendee %>
-    </div>
-
     <div class="actions">
       <% if !session[:user_id].nil? %>
         <%= form.submit class: "btn btn-primary" %>

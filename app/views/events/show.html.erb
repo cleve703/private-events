@@ -22,7 +22,7 @@
 
 <table class="table">
   <tr>
-    <th>Attendees</th>
+    <th>Attendees</th><th></th>
   </tr>
   <% if @event.attendees.blank? %>
     <td> -Nobody has been invited yet- </td>
@@ -30,13 +30,14 @@
     <% @event.attendees.each do |attendee| %>
       <tr>
       <td><%= attendee.username %></td>
+      <td><%= link_to 'Uninvite', "#{@event.id}/invitations/#{attendee.id}", method: 'delete' %>
       </tr>
     <% end %>
   <% end %>
 </table>
 <div>
   <% if @authorized_inviter == true %>
-    <%= form_with(model: @invitation, url: '/invitations', method: 'post', local: true) do |form| %>
+    <%= form_with(model: @invitation, url: "/events/#{@event.id}/invitations", method: 'post', local: true) do |form| %>
       <div class = "hidden-field">
         <%= form.hidden_field :event, value: @event.id %>
       </div>
