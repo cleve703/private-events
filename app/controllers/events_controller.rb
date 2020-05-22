@@ -20,6 +20,14 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @invitation = Invitation.new
+    if current_user.nil?
+      @authorized_inviter = false
+    elsif @event.creator_id == current_user.id
+      @authorized_inviter = true
+    else 
+      @authorized_invter = false
+    end
   end
 
   def edit
@@ -31,7 +39,7 @@ class EventsController < ApplicationController
   private
 
     def event_params
-      params.require(:event).permit(:date, :description, :location)
+      params.require(:event).permit(:date, :description, :location, :attendee)
     end
 
 end

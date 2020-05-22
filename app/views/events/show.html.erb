@@ -24,10 +24,31 @@
   <tr>
     <th>Attendees</th>
   </tr>
-  <% @event.attendees.each do |attendee| %>
-    <td><%= attendee.username %></td>
+  <% if @event.attendees.blank? %>
+    <td> -Nobody has been invited yet- </td>
+  <% else %>
+    <% @event.attendees.each do |attendee| %>
+      <tr>
+      <td><%= attendee.username %></td>
+      </tr>
+    <% end %>
   <% end %>
 </table>
-
+<div>
+  <% if @authorized_inviter == true %>
+    <%= form_with(model: @invitation, url: '/invitations', method: 'post', local: true) do |form| %>
+      <div class = "hidden-field">
+        <%= form.hidden_field :event, value: @event.id %>
+      </div>
+      <div class="field">
+        <%= form.label :attendee %>
+        <%= form.text_field :attendee %>
+      </div>
+      <div class="actions">
+        <%= form.submit class: "btn" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 
 <%= link_to 'Back', events_path %>
